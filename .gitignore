@@ -1,0 +1,46 @@
+# Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+jspm_packages/
+
+# Build output
+dist/
+build/
+
+# IDEs and Editors
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# MongoDB Data Files (if applicable)
+data/
+
+# Coverage directory for testing
+coverage/
+
+# Debug files
+*.pid
+*.seed
+*.gz
+
+# Package distribution files
+*.tgz
+*.tar.gz
+
+# npm
+package-lock.json
+yarn.lock
