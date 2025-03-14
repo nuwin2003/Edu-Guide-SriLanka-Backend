@@ -24,11 +24,12 @@ const signUp = async (req, res) => {
         });
 
         res.status(201).json({
+            status: 'success',
             message: 'User signup Successful!.',
             userId: user._id
         });
     } catch (error) {
-        res.status(500).json({ message: 'Server error', error: error.message });
+        res.status(500).json({ status: 'failure', message: 'Server error', error: error.message });
     }
 };
 
@@ -39,21 +40,23 @@ const signIn = async (req, res) => {
     try {
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            return res.status(404).json({ status: 'failure', message: 'User not found' });
         }
 
         const isMatch = await user.matchPassword(password);
         if (!isMatch) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            return res.status(401).json({ status: 'failure', message: 'Invalid credentials' });
         }
 
         res.status(200).json({
+            status: 'success',
             message: 'User Sign-In Successful',
             token: generateToken(user._id),
-            userId: user._id
+            userId: user._id,
+            userName: user.userName
         });
     } catch (error) {
-        res.status(500).json({ message: 'Server error', error: error.message });
+        res.status(500).json({ status: 'failure', message: 'Server error', error: error.message });
     }
 };
 
